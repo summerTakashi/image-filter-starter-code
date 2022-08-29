@@ -34,20 +34,20 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     const fs = require('fs'); //fs module
     //const image_url:string = req.query["image_url"];
     if (!image_url) {
-      return res.status(400).send({ message: 'image_url is required or malformed' });
+      return res.status(422).send({ message: 'image_url is required or malformed' });
     }else{
       try{
         //    2. call filterImageFromURL(image_url) to filter the image
         const resultingFiles = await filterImageFromURL(image_url);
         //    3. send the resulting file in the response
         //res.send('Hello ' + resultingFiles);
-        res.sendFile(resultingFiles);
+        res.status(200).sendFile(resultingFiles);
         //    4. deletes any files on the server on finish of the response
         setTimeout(()=>{
           fs.unlinkSync(resultingFiles);
         }, 2000);
       }catch(error) {
-        console.log("error", error);
+        return res.status(400).send({ message: 'error!' });
       }
     }
 
