@@ -1,0 +1,1 @@
+http://image-filter-starter-code-dev22222222222222222222.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://i.gzn.jp/img/2022/08/30/tesla-virtual-power-plant-japan/00.jpg
